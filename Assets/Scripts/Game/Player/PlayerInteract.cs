@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
+using _20220515_Platform2.Game.Props;
+
 /*
  * [Namespace] _20220515_Platform2.Game.Player
  * 플레이어와 관련된 내용을 처리합니다.
@@ -22,11 +24,22 @@ namespace _20220515_Platform2.Game.Player
 
 		private GameObject interactObject; // 1.주변에 인식된 2.가장 가까운 3.상호작용이 가능한 GameObject
 
+		private PlayerInventory inv;
+
+		private void Start()
+		{
+			inv = GetComponent<PlayerInventory>();
+		}
+
 		private void Update()
 		{
 			if (availableInteract & Input.GetKeyDown(interactKey))
 			{
-				// TODO: GameObject 상호작용 시작
+				EventProp prop = interactObject.GetComponent<EventProp>();
+				if (prop != null)
+				{
+					prop.OnInteract(inv);
+				}
 			}
 		}
 
