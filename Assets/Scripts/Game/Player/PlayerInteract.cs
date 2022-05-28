@@ -20,6 +20,9 @@ namespace _20220515_Platform2.Game.Player
 		public bool availableInteract = false;
 
 		[SerializeField]
+		private string interactTag = "Interactable";
+
+		[SerializeField]
 		private KeyCode interactKey = KeyCode.E;
 
 		private GameObject interactObject; // 1.주변에 인식된 2.가장 가까운 3.상호작용이 가능한 GameObject
@@ -45,19 +48,20 @@ namespace _20220515_Platform2.Game.Player
 
 		private void OnTriggerEnter2D(Collider2D collision)
 		{
-			if (collision.tag == "Interactable" || collision.transform.parent.tag == "Interactable")
-			{
-				interactObject = collision.gameObject;
-				availableInteract = true;
-			}
+			ChangeInteractState(interactTag, collision, true);
 		}
 
 		private void OnTriggerExit2D(Collider2D collision)
 		{
-			if (collision.tag == "Interactable" || collision.transform.parent.tag == "Interactable")
+			ChangeInteractState(interactTag, collision, false);
+		}
+
+		private void ChangeInteractState(string tag, Collider2D collision, bool isAvailable)
+		{
+			if (collision.tag == tag || collision.transform.parent.tag == tag)
 			{
-				interactObject = null;
-				availableInteract = false;
+				availableInteract = isAvailable;
+				interactObject = isAvailable ? collision.gameObject : null;
 			}
 		}
 	}

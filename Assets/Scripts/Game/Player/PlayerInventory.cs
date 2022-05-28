@@ -45,7 +45,7 @@ namespace _20220515_Platform2.Game.Player
 			// 아이템 데이터가 업데이트 될 때 화면에 업데이트된 내용을 적용
 			for (int i = 0; i < slotItems.Count; i++)
 			{
-				Image itemImage = slots[i].transform.GetChild(1/*UI 작업 후 수정 예정*/).GetComponent<Image>();
+				Image itemImage = slots[i].transform.GetChild(0).GetComponent<Image>();
 
 				if (slotItems[i] == ItemCode.None)
 				{

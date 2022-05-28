@@ -27,6 +27,22 @@ namespace _20220515_Platform2.Game.Props
 		[SerializeField]
 		protected List<ItemCode> giveItems = new List<ItemCode>(); // 상호작용 후 지급할 아이템
 
+		protected void GiveAllItems(PlayerInventory inventory)
+		{
+			for (int i = 0; i < giveItems.Count; i++)
+			{
+				inventory.GiveItem(giveItems[i]);
+			}
+
+			Debug.LogWarning("플레이어가 상호작용해서 모든 아이템을 지급하였습니다.");
+		}
+
+		protected void UseItem(PlayerInventory inventory)
+		{
+			inventory.TakeItem(useItem);
+			Debug.LogWarning("플레이어가 상호작용을 위해 " + ItemManager.Instance.GetItemName(useItem) + "(을)를 사용하였습니다.");
+		}
+
 		public abstract void OnInteract(PlayerInventory inventory);
 	}
 }

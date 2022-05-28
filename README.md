@@ -13,6 +13,8 @@
     - Pixel Art Icon Pack - RPG by Cainos ([링크](https://assetstore.unity.com/packages/2d/gui/icons/pixel-art-icon-pack-rpg-158343))
     - easy UI emerald - default by astr999 ([링크](https://assetstore.unity.com/packages/2d/gui/icons/easy-ui-emerald-default-112796))
     - Nature - Essentials by Nox_Sound ([링크](https://assetstore.unity.com/packages/audio/ambient/nature/nature-essentials-208227))
+- 폰트
+    - 넥슨 메이플스토리 ([링크](http://levelup.nexon.com/font/index.aspx?page=5))
 
 ## 실행 파일
 
