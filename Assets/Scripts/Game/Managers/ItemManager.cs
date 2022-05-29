@@ -16,7 +16,7 @@ namespace _20220515_Platform2.Game.Managers
 	public enum ItemCode
 	{
 		None,
-		Axe,
+		Crystal,
 		Staff,
 		Book
 	}

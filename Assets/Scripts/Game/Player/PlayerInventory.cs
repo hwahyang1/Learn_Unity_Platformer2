@@ -22,7 +22,7 @@ namespace _20220515_Platform2.Game.Player
 		// - [v] 아이템 주기
 		// - [v] 아이템 뺏기
 		// - [v] 아이템 초기화(모두 뺏기)
-		// - [x] 아이템을 가지고 있는지 확인 (List에 존재함)
+		// - [x] 아이템을 가지고 있는지 확인
 		// - [v] 가지고 있는 아이템을 화면에 표시
 
 		public GameObject invRoot; // 인벤토리 UI의 부모 GameObject
@@ -117,6 +117,11 @@ namespace _20220515_Platform2.Game.Player
 			}
 
 			Debug.Log("플레이어의 인벤토리를 초기화하였습니다.");
+		}
+
+		public bool IsContainsItem(ItemCode code)
+		{
+			return slotItems.Contains(code);
 		}
 	}
 }

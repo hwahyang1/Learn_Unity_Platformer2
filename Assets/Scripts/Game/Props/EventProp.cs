@@ -5,6 +5,7 @@ using UnityEngine;
 
 using _20220515_Platform2.Game.Managers;
 using _20220515_Platform2.Game.Player;
+using _20220515_Platform2.Game.UI;
 
 /*
  * [Namespace] _20220515_Platform2.Game.Prop
@@ -26,6 +27,15 @@ namespace _20220515_Platform2.Game.Props
 
 		[SerializeField]
 		protected List<ItemCode> giveItems = new List<ItemCode>(); // 상호작용 후 지급할 아이템
+
+		protected ScriptView script;
+
+		protected virtual void Start()
+		{
+			// GameObject.FindObject(s)OfType<>와 달리 프로젝트 전체를 뒤짐 (비활성화 된 애들도 검색 가능)
+			ScriptView[] objs = Resources.FindObjectsOfTypeAll<ScriptView>();
+			script = objs[0];
+		}
 
 		protected void GiveAllItems(PlayerInventory inventory)
 		{

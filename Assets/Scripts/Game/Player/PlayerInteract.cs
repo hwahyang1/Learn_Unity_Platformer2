@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 using _20220515_Platform2.Game.Props;
 
@@ -38,16 +39,29 @@ namespace _20220515_Platform2.Game.Player
 		{
 			if (availableInteract & Input.GetKeyDown(interactKey))
 			{
-				EventProp prop = interactObject.GetComponent<EventProp>();
-				if (prop != null)
+				try
 				{
-					prop.OnInteract(inv);
+					EventProp prop = interactObject.GetComponent<EventProp>();
+
+					if (prop != null)
+					{
+						prop.OnInteract(inv);
+					}
+				}
+				catch (MissingReferenceException)
+				{
+					interactObject = null;
+					availableInteract = false;
 				}
 			}
 		}
 
 		private void OnTriggerEnter2D(Collider2D collision)
 		{
+			if (collision.name == "Layer2_GameExitTrigger")
+			{
+				SceneManager.LoadScene("IntroScene");
+			}
 			ChangeInteractState(interactTag, collision, true);
 		}
 

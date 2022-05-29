@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
+using _20220515_Platform2.Game.Managers;
 using _20220515_Platform2.Game.Player;
 
 /*
@@ -22,8 +23,9 @@ namespace _20220515_Platform2.Game.Props
 
 		private SpriteRenderer render;
 
-		private void Start()
+		protected override void Start()
 		{
+			base.Start();
 			render = GetComponent<SpriteRenderer>();
 		}
 
@@ -32,6 +34,8 @@ namespace _20220515_Platform2.Game.Props
 			if (!isUsed)
 			{
 				isUsed = true;
+
+				script.ShowMesssage("상자 안에서 '" + ItemManager.Instance.GetItemName(giveItems[0]) + "' 아이템을 획득했습니다!");
 
 				StartCoroutine("OnChestInteract"); // C#에서는 Invoke가 가능해서 생길 수 있는 구조
 				//StartCoroutine(OnChestInteract());
